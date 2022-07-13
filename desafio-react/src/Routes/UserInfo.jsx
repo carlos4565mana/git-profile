@@ -4,6 +4,7 @@ import Repo from "../components/Repo";
 import Events from "../components/Events";
 import Tabs from "../components/Tabs"
 import UserDetails from "../components/UsersDetails";
+import UsersContainer from "../components/UsersContainer";
 import Loading from "../components/Loading";
 
 const UserInfo = () => {
@@ -11,7 +12,7 @@ const UserInfo = () => {
   const [user, setUser] = useState([]);
   const [type, setType] = useState("repos");
   const [users, setUsers] = useState([]);
-  const [loadind, setLoaing] = useState(null);
+  const [loading, setLoading] = useState(null);
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -27,11 +28,12 @@ const UserInfo = () => {
 
   async function GetUrls() {
     setUsers([]);
+   setLoading(true);
 
     const res = await fetch(EndPoint + pathname + `/${type}`);
     const data = await res.json();
     setUsers(data);
-    setLoaing(null);
+   setLoading(null);
  
   }
 
@@ -53,7 +55,7 @@ const UserInfo = () => {
       <div className="flex border-b pb-4 gap-6 mt-[10%] mb-6 justify-center md:text-xl ">
         <Tabs type={type} setType={setType} />
       </div>  
-      {loadind && <Loading />}
+      {loading && <Loading />}
       {type === "repos" && (
         <div className="grid md:grid-cols-2 grid-cols-1 gap-7 w-10/12 mx-auto">
           {users && <Repo users={users} />}

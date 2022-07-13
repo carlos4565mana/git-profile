@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { format } from "timeago.js";
 
 const Events = ( { data }) => {
   return (
