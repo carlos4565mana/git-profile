@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Repo
 from "./Repo";
+import Events from "./Events";
 
 const UserInfo = () => {
 
@@ -10,7 +11,7 @@ const UserInfo = () => {
 
   let EndPoint = "https://api.github.com/users";
   const pathname = "/macournoyer"
-  const type = "repos"
+  const type = "received_events"
 
   async function GetUserInfo() {
     const res = await fetch(EndPoint + pathname);
@@ -39,6 +40,12 @@ const UserInfo = () => {
       {type === "repos" && (
         <div className="grid md:grid-cols-2 grid-cols-1 gap-7 w-10/12 mx-auto">
           {users && <Repo users={users} />}
+        </div>
+      )}
+
+      {type === "received_events" && (
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-7 w-10/12 mx-auto ">
+          {users && <Events data={users} />}
         </div>
       )}
 
