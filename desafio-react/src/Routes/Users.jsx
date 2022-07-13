@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import UsersContainer from "./UsersContainer";
-import Loading from "./Loading";
+import UsersContainer from "../components/UsersContainer";
+import Loading from "../components/Loading";
 
 const Users = () => {
   const [users, setUsers] = useState([]);

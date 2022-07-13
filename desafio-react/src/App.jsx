@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from 'react-router-dom'
 import Logo from './components/Logo'
-import UserInfo from './components/UserInfo'
-import Users from './components/Users'
+import UserInfo from './Routes/UserInfo'
+import Users from './Routes/Users'
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Logo />
         <Routes>
           <Route  path="/" element={<Users />}></Route>
-          <Route></Route>
+          <Route path="/:name" element={<UserInfo />}></Route>
         </Routes>
         
       </div>
