@@ -14,6 +14,7 @@ const Users = () => {
       setLoading(true);
       const res = await fetch(BaseURL);
       const data = await res.json();
+      console.log(data)
       setUsers(data);
       setLoading(null);
     }
