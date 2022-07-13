@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import UsersContainer from "./UsersContainer";
+import Loading from "./Loading";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -24,6 +26,7 @@ const Users = () => {
       const res = await fetch(BaseURL + "/" + user.current.value);
       const data=  await res.json();
       setUsers(()=>[data]);
+      console.log(user)
       user.current.value = "";
     }
     setLoading(null);
@@ -50,6 +53,7 @@ const Users = () => {
             Search
           </button>
       </div>
+      <div>{loading ? <Loading /> : <UsersContainer users={users} />}</div>
    </div>
   )
 }
